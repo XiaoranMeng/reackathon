@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Reackathon.Domain\Reackathon.Domain.csproj" />
+    <ProjectReference Include="..\Reackathon.Persistence\Reackathon.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
