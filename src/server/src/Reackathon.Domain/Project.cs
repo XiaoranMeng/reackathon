@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Reackathon.Domain
+﻿namespace Reackathon.Domain
 {
     public class Project : Entity
     {
@@ -10,9 +8,8 @@ namespace Reackathon.Domain
 
         public string Description { get; set; }
 
-        public string ImageUrl { get; set; }
+        public string LogoUrl { get; set; }
 
-
-        public Theme Theme { get; set; }
+        public virtual Theme Theme { get; set; }
     }
 }
