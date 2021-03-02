@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
 import axios from 'axios';
 
 const App = () => {
@@ -7,7 +6,6 @@ const App = () => {
 
     useEffect(() => {
         axios.get('http://localhost:5000/api/teams').then(response => {
-            console.log(response);
             setTeams(response.data);
         })
     }, []);
