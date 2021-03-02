@@ -4,7 +4,7 @@ namespace Reackathon.Domain
 {
     public class Team : Entity
     {
-        public Guid ProjectId { get; set; }
+        public int ProjectId { get; set; }
 
         public int TableNumber { get; set; }
 

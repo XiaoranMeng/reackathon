@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Reackathon.Domain\Reackathon.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>
