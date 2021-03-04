@@ -1,4 +1,5 @@
 ﻿using Reackathon.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -46,26 +47,14 @@ namespace Reackathon.Persistence
                         Name = "Team 1",
                         Tagline = "Team 1 Tagline",
                         ImageUrl = "Team 1 Image",
-                        Project = new Project
-                        {
-                            Title = "Team 1 Project",
-                            Description = "Team 1 project is cool",
-                            LogoUrl = "Team 1 project logo",
-                            ThemeId = 1
-                        }
+                        CreatedAt = DateTime.Now
                     },
                     new Team
                     {
                         Name = "Team 2",
                         Tagline = "Team 2 Tagline",
                         ImageUrl = "Team 2 Image",
-                        Project = new Project
-                        {
-                            Title = "Team 2 Project",
-                            Description = "Team 2 project is cool",
-                            LogoUrl = "Team 2 project logo",
-                            ThemeId = 2
-                        }
+                        CreatedAt = DateTime.Now
                     },
                 };
 

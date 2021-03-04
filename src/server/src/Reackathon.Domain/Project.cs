@@ -1,9 +1,9 @@
-﻿namespace Reackathon.Domain
-{
-    public class Project : Entity
-    {
-        public int ThemeId { get; set; }
+﻿using System;
 
+namespace Reackathon.Domain
+{
+    public class Project : Entity<Guid>
+    {
         public string Title { get; set; }
 
         public string Description { get; set; }

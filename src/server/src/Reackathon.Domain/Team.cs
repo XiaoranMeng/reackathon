@@ -1,6 +1,8 @@
-﻿namespace Reackathon.Domain
+﻿using System;
+
+namespace Reackathon.Domain
 {
-    public class Team : Entity
+    public class Team : Entity<Guid>
     {
         public string Name { get; set; }
 
@@ -8,6 +10,6 @@
 
         public string ImageUrl { get; set; }
 
-        public virtual Project Project { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

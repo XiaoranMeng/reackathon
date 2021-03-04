@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Reackathon.Domain;
 using Reackathon.Persistence;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace Reackathon.Application.Teams
     {
         public class Query : IRequest<Team>
         {
-            public int Id { get; set; }
+            public Guid Id { get; set; }
         }
 
         public class Handler : IRequestHandler<Query, Team>

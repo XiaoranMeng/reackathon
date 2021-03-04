@@ -1,6 +1,8 @@
-﻿namespace Reackathon.Domain
+﻿using System;
+
+namespace Reackathon.Domain
 {
-    public class Theme : Entity
+    public class Theme : Entity<Guid>
     {
         public string Name { get; set; }
 

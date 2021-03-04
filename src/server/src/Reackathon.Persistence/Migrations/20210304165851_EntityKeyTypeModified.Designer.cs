@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Reackathon.Persistence;
 
 namespace Reackathon.Persistence.Migrations
 {
     [DbContext(typeof(ReackathonDbContext))]
-    partial class ReackathonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210304165851_EntityKeyTypeModified")]
+    partial class EntityKeyTypeModified
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,20 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import NavBar from './NavBar';
+import { Container } from 'semantic-ui-react';
+import TeamDashboard from '../../features/teams/dashboard/TeamDashboard';
+import LoadingSpinner from './LoadingSpinner';
+import { useStore } from '../stores/store';
+import { observer } from 'mobx-react-lite';
 
 const App = () => {
-    const [teams, setTeams] = useState([]);
+    const { teamStore } = useStore();
+    const { loadingEnabled, fetchTeams } = teamStore;
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/teams').then(response => {
-            setTeams(response.data);
-        })
-    }, []);
+        fetchTeams();
+    }, [fetchTeams]);
+
+    if (loadingEnabled) {
+        return <LoadingSpinner />;
+    }
 
     return (
-        <div>
-            
-        </div>
-    )
-}
+        <>
+            <NavBar />
+            <Container style={{ marginTop: '7em' }}>
+                <TeamDashboard />
+            </Container>
+        </>
+    );
+};
 
-export default App
+export default observer(App);
