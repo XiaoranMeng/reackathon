@@ -1,11 +1,12 @@
 import { observer } from 'mobx-react-lite';
-import React, { SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Item, Segment } from 'semantic-ui-react';
 import { useStore } from '../../../app/stores/store';
 
 const TeamList = () => {
     const { teamStore } = useStore();
-    const { teamsByDateCreated, loading, selectTeam, deleteTeam } = teamStore;
+    const { teamsByDateCreated, loading, deleteTeam } = teamStore;
     const [target, setTarget] = useState('');
 
     const handleDeleteTeam = (e: SyntheticEvent<HTMLButtonElement>, id: string) => {
@@ -26,16 +27,15 @@ const TeamList = () => {
                             </Item.Description>
                             <Item.Extra>
                                 <Button
-                                    negative
                                     loading={loading && target === id} 
                                     onClick={e => handleDeleteTeam(e, id!)}
                                     name={id}
                                     floated='right' 
                                     content='Delete' 
                                 />
-                                <Button 
-                                    primary 
-                                    onClick={() => selectTeam(id!)} 
+                                <Button  
+                                    as={Link}
+                                    to={`/teams/${id}`}
                                     floated='right' 
                                     content='Details' 
                                 />

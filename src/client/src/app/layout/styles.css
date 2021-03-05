@@ -1,5 +1,5 @@
 * {
-    font-family: 'Quicksand', sans-serif !important;
+    font-family: 'Roboto', sans-serif !important;
     letter-spacing: 0.08rem !important;
 }
 
@@ -7,14 +7,14 @@ body {
     background-color: #f3f3f3 !important;
 }
 
-.ui.inverted.top.fixed.menu {
-    /* background: linear-gradient(to bottom right, #7927b2, #fb31d9); */
-    background-color: #0E6EB8;
-    font-size: 1.3rem !important;
+.ui.top.fixed.menu {
+    /* background: linear-gradient(to bottom right, #7927b2, #fb31d9) !important; */
+    background-color: #e9e9e9;
+    font-size: 1.2rem !important;
 }
 
 .ui.segment {
-    /* background-color: #c73a8cb6 !important; */
+
 }
 
 .ui.segment .description {

@@ -1,14 +1,23 @@
 import { observer } from 'mobx-react-lite'
-import React from 'react'
+import { useEffect } from 'react'
 import { Grid } from 'semantic-ui-react'
+import LoadingSpinner from '../../../app/layout/LoadingSpinner'
 import { useStore } from '../../../app/stores/store'
-import TeamDetails from '../details/TeamDetails'
-import TeamForm from '../form/TeamForm'
 import TeamList from './TeamList'
 
 const TeamDashboard = () => {
-    const { teamStore } = useStore();
-    const { selectedTeam, editing } = teamStore;
+    const { teamStore } = useStore()
+    const { teamRegistry, loadingEnabled, fetchTeams } = teamStore
+
+    useEffect(() => {
+        if (teamRegistry.size <= 1) {
+            fetchTeams()
+        }
+    }, [fetchTeams, teamRegistry.size])
+
+    if (loadingEnabled) {
+        return <LoadingSpinner />
+    }
 
     return (
         <Grid>
@@ -16,11 +25,10 @@ const TeamDashboard = () => {
                 <TeamList />
             </Grid.Column>
             <Grid.Column width='6'>
-                {selectedTeam && <TeamDetails />}
-                {editing && <TeamForm key={selectedTeam ? selectedTeam.id : 0} />}
+                <h2>Filters</h2>
             </Grid.Column>
         </Grid>
-    );
+    )
 }
 
-export default observer(TeamDashboard);
+export default observer(TeamDashboard)

@@ -11,6 +11,7 @@ namespace Reackathon.Persistence
         }
 
         public DbSet<Team> Teams { get; set; }
+        public DbSet<Project> Projects { get; set; }
         public DbSet<Theme> Themes { get; set; }
     }
 }
