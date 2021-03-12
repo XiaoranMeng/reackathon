@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { Grid } from 'semantic-ui-react'
 import LoadingSpinner from '../../../app/layout/LoadingSpinner'
 import { useStore } from '../../../app/stores/store'
+import TeamFilters from './TeamFilters'
 import TeamList from './TeamList'
 
 const TeamDashboard = () => {
@@ -25,7 +26,7 @@ const TeamDashboard = () => {
                 <TeamList />
             </Grid.Column>
             <Grid.Column width='6'>
-                <h2>Filters</h2>
+               <TeamFilters />
             </Grid.Column>
         </Grid>
     )

@@ -1,12 +1,22 @@
 import { Link } from 'react-router-dom'
-import { Container } from 'semantic-ui-react'
+import { Button, Container, Header, Image, Segment } from 'semantic-ui-react'
 
 const HomPage = () => {
     return (
-        <Container style={{ marginTop: '7em' }}>
-            <h1>Home Page</h1>
-            <h3>Go to <Link to='/teams'>Teams Dashboard</Link></h3>
-        </Container>
+        <Segment inverted textAlign='center' vertical className='masthead'>
+            <Container text>
+                <Header as='h1' inverted>
+                    <Image 
+                        size='massive' 
+                        src='/assets/logo.png' 
+                        alt='logo' 
+                        style={{ marginBottom: 12 }}
+                    /> Reackathon
+                </Header>
+                <Header as='h2' inverted content='Welcome to Reackathon' />
+                <Button as={Link} to='/teams' size='huge' inverted>Teams Dashboard</Button>
+            </Container>
+        </Segment>
     )
 }
 

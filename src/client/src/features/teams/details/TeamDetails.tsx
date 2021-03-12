@@ -1,10 +1,13 @@
 import { observer } from 'mobx-react-lite'
 import { useEffect } from 'react'
 import { useParams } from 'react-router'
-import { Link } from 'react-router-dom'
-import { Button, Card, Image } from 'semantic-ui-react'
-import LoadingSpinner from '../../../app/layout/LoadingSpinner'
+import { Grid } from 'semantic-ui-react'
 import { useStore } from '../../../app/stores/store'
+import TeamDetailsChat from './TeamDetailsChat'
+import TeamDetailsContent from './TeamDetailsContent'
+import TeamDetailsHeader from './TeamDetailsHeader'
+import TeamDetailsSidebar from './TeamDetailsSidebar'
+import LoadingSpinner from '../../../app/layout/LoadingSpinner'
 
 const TeamDetails = () => {
     const { teamStore } = useStore()
@@ -22,19 +25,16 @@ const TeamDetails = () => {
     }
 
     return (
-        <Card fluid>
-            <Image src={`/assets/placeholder.png`} />
-            <Card.Content>
-                <Card.Header>{team.name}</Card.Header>
-                <Card.Description>{team.tagline}</Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-                <Button.Group widths={2}>
-                    <Button as={Link} to={`/manage/${team.id}`} content='Update' />
-                    <Button as={Link} to={`/teams`} content='Cancel' />
-                </Button.Group>
-            </Card.Content>
-        </Card>
+        <Grid>
+            <Grid.Column width={10}>
+                <TeamDetailsHeader team={team} />
+                <TeamDetailsContent team={team} />
+                <TeamDetailsChat />
+            </Grid.Column>
+            <Grid.Column width={6}>
+                <TeamDetailsSidebar />
+            </Grid.Column>
+        </Grid>
     )
 }
 

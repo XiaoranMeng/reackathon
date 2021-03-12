@@ -1,50 +1,25 @@
 import { observer } from 'mobx-react-lite';
-import { SyntheticEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button, Item, Segment } from 'semantic-ui-react';
-import { useStore } from '../../../app/stores/store';
+import { Fragment } from 'react';
+import { Header } from 'semantic-ui-react'
+import { useStore } from '../../../app/stores/store'
+import TeamListItem from './TeamListItem'
 
 const TeamList = () => {
-    const { teamStore } = useStore();
-    const { teamsByDateCreated, loading, deleteTeam } = teamStore;
-    const [target, setTarget] = useState('');
-
-    const handleDeleteTeam = (e: SyntheticEvent<HTMLButtonElement>, id: string) => {
-        setTarget(e.currentTarget.name);
-        deleteTeam(id);
-    };
+    const { teamStore } = useStore()
+    const { groupedTeams } = teamStore
 
     return (
-        <Segment>
-            <Item.Group divided>
-                {teamsByDateCreated.map(({ id, createdAt, name, tagline })=> (
-                    <Item key={id}>
-                        <Item.Content>
-                            <Item.Header as='a'>{name}</Item.Header>
-                            <Item.Meta>{createdAt}</Item.Meta>
-                            <Item.Description>
-                                <div>{tagline}</div>
-                            </Item.Description>
-                            <Item.Extra>
-                                <Button
-                                    loading={loading && target === id} 
-                                    onClick={e => handleDeleteTeam(e, id!)}
-                                    name={id}
-                                    floated='right' 
-                                    content='Delete' 
-                                />
-                                <Button  
-                                    as={Link}
-                                    to={`/teams/${id}`}
-                                    floated='right' 
-                                    content='Details' 
-                                />
-                            </Item.Extra>
-                        </Item.Content>
-                    </Item>
-                ))}
-            </Item.Group>
-        </Segment>
+        <>
+            {groupedTeams.map(([dateCreated, teams]) => (
+                <Fragment key={dateCreated}>
+                    <Header sub color='pink'>{dateCreated}</Header>
+                    {teams.map(team => (
+                        <TeamListItem key={team.id} team={team} />
+                    ))}
+                </Fragment>
+            ))}
+        </>
+        
     );
 };
 
